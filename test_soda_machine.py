@@ -11,5 +11,10 @@ class TestFillRegister(unittest.TestCase):
         register_length = len(self.soda_machine.register)
         self.assertEqual(88, register_length)
 
-    if __name__ == "__main__":
-        unittest.main
+if __name__ == "__main__":
+    unittest.main
+
+class TestFillInventory(unittest.TestCase):
+
+    def setUp(self):
+        self.soda_machine = SodaMachine()
