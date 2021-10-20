@@ -73,5 +73,18 @@ class TestAddCoinsToWallet(unittest.TestCase):
         self.assertEqual(added_empty_list, 88)
 
 
+class AddCanToBackpack(unittest.TestCase):
+    """Test add_can_to_backpack method in Customer class"""
+
+    def setUp(self):
+        self.customer = Customer()
+
+    def test_add_can_to_backpack_returns_additional_value(self):
+        """Test by adding a Cola object to customers backpack, then verify the value has been added"""
+        self.customer.add_can_to_backpack("Cola")
+        added_cola_to_backpack = len(self.customer.backpack.purchased_cans)
+        self.assertEqual(added_cola_to_backpack, 1)
+
+
 if __name__ == "__main__":
     unittest.main()
