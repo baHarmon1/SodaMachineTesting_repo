@@ -3,7 +3,6 @@ from wallet import Wallet
 
 class TestFillWallet(unittest.TestCase):
 
-
     def setUp(self):
         self.wallet = Wallet()
 
@@ -12,5 +11,5 @@ class TestFillWallet(unittest.TestCase):
         wallet_length = len(self.wallet.money)
         self.assertEqual(88, wallet_length)
 
-if __name__ == "__main__":
-    unittest.main()
+    if __name__ == "__main__":
+        unittest.main()
