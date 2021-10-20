@@ -1,4 +1,3 @@
-from logging import currentframe
 import unittest
 from customer import Customer
 
