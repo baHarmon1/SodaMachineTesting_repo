@@ -3,7 +3,7 @@ from customer import Customer
 
 
 class TestGetWalletCoin(unittest.TestCase):
-    """Test got the get_wallet_coin method in Customer class"""
+    """Test the get_wallet_coin method in Customer class"""
 
     def setUp(self):
         self.customer = Customer()
@@ -49,6 +49,22 @@ class TestGetWalletCoin(unittest.TestCase):
         """Test that passing an invalid penny string should return none"""
         invalid_penny_return = self.customer.get_wallet_coin("Invalid")
         self.assertIsNone(invalid_penny_return)
+
+
+class TestAddCoinsToWallet(unittest.TestCase):
+    """Test add_coins_to_wallet method in the Customer class"""
+
+    def setUp(self):
+        self.customer = Customer()
+
+    def test_pass_list_of_coins_returns_valid_wallet(self):
+        """Test add_coins_to_wallet by passing a string and checking that wallet is updated"""
+        three_coins = ["Quarter", "Quarter", "Quarter"]
+        self.customer.add_coins_to_wallet(three_coins)
+        money_plus_three = len(self.customer.wallet.money)
+        self.assertEqual(money_plus_three, 91)
+
+    def
 
 
 if __name__ == "__main__":
