@@ -1,3 +1,4 @@
+from logging import currentframe
 import unittest
 from customer import Customer
 
@@ -64,7 +65,12 @@ class TestAddCoinsToWallet(unittest.TestCase):
         money_plus_three = len(self.customer.wallet.money)
         self.assertEqual(money_plus_three, 91)
 
-    def
+    def test_pass_empty_list_return_no_change(self):
+        """Test by passing an empty list, then verify there was no change to the wallet"""
+        empty_list = []
+        self.customer.add_coins_to_wallet(empty_list)
+        added_empty_list = len(self.customer.wallet.money)
+        self.assertEqual(added_empty_list, 88)
 
 
 if __name__ == "__main__":

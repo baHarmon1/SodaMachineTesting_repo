@@ -1,6 +1,7 @@
 import unittest
 from soda_machine import SodaMachine
 
+
 class TestFillRegister(unittest.TestCase):
 
     def setUp(self):
@@ -11,10 +12,12 @@ class TestFillRegister(unittest.TestCase):
         register_length = len(self.soda_machine.register)
         self.assertEqual(88, register_length)
 
-if __name__ == "__main__":
-    unittest.main
 
 class TestFillInventory(unittest.TestCase):
 
     def setUp(self):
         self.soda_machine = SodaMachine()
+
+
+if __name__ == "__main__":
+    unittest.main()
