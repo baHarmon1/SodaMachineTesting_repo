@@ -3,7 +3,7 @@ import unittest
 from cans import Can, Cola, OrangeSoda, RootBeer
 from coins import Quarter, Dime, Nickel, Penny
 
-from user_interface import display_payment_value, get_unique_can_names, try_parse_int, validate_main_menu
+from user_interface import display_payment_value, get_unique_can_names, try_parse_int, validate_coin_selection, validate_main_menu
 
 
 class TestValidateMainMenu(unittest.TestCase):
@@ -99,6 +99,40 @@ class TestDisplayPaymentValue(unittest.TestCase):
         list_of_coins = []
         total_value = display_payment_value(list_of_coins)
         self.assertEqual(total_value, 0)
+
+
+class TestValidateCoinSelection(unittest.TestCase):
+    """Test validate_coin_selection method from UserInterface class"""
+
+    def test_pass_1(self):
+        """Test by passing 1 into validate_coin_selection return (True, "Quarter")"""
+        validate_1 = validate_coin_selection(1)
+        self.assertEqual(validate_1, (True, "Quarter"))
+
+    def test_pass_2(self):
+        """Test by passing 2 into validate_coin_selection return (True, "Dime")"""
+        validate_2 = validate_coin_selection(2)
+        self.assertEqual(validate_2, (True, "Dime"))
+
+    def test_pass_3(self):
+        """Test by passing 3 into validate_coin_selection return (True, "Nickel")"""
+        validate_3 = validate_coin_selection(3)
+        self.assertEqual(validate_3, (True, "Nickel"))
+
+    def test_pass_4(self):
+        """Test by passing 4 into validate_coin_selection return (True, "Penny")"""
+        validate_4 = validate_coin_selection(4)
+        self.assertEqual(validate_4, (True, "Penny"))
+
+    def test_pass_5(self):
+        """Test by passing 5 into validate_coin_selection return (True, "Done")"""
+        validate_5 = validate_coin_selection(5)
+        self.assertEqual(validate_5, (True, "Done"))
+
+    def test_pass_incorrect_value(self):
+        """Test by passing an incorrect int into validate_coin_selection return (False, None)"""
+        validate_incorrect = validate_coin_selection(99)
+        self.assertEqual(validate_incorrect, (False, None))
 
 
 if __name__ == "__main__":
