@@ -1,6 +1,6 @@
 import unittest
 
-from user_interface import validate_main_menu
+from user_interface import try_parse_int, validate_main_menu
 
 
 class TestValidateMainMenu(unittest.TestCase):
@@ -30,6 +30,20 @@ class TestValidateMainMenu(unittest.TestCase):
         """Test by passing an incorrect number through main menu and return (False, None)"""
         test_input_incorrect = validate_main_menu(99)
         self.assertEqual(test_input_incorrect, (False, None))
+
+
+class TestTryParseInt(unittest.TestCase):
+    """Test try_parse_int method in UserInterface class"""
+
+    def test_pass_string_10_return_int_10(self):
+        """Test by passing the string of "10" to try_parse_int and return an int of 10"""
+        pass_string_10 = try_parse_int("10")
+        self.assertEqual(pass_string_10, 10)
+
+    def test_pass_incorrect_string_return_0_int(self):
+        """Test by passing an incorrect string with expected return int 0"""
+        pass_incorrect_string = try_parse_int("Hello")
+        self.assertEqual(pass_incorrect_string, 0)
 
 
 if __name__ == "__main__":
