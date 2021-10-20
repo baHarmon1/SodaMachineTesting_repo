@@ -94,6 +94,12 @@ class TestDisplayPaymentValue(unittest.TestCase):
         total_value = display_payment_value(list_of_coins)
         self.assertEqual(total_value, .41)
 
+    def test_passing_an_empty_string(self):
+        """Test by passing an empty string and returned value is 0"""
+        list_of_coins = []
+        total_value = display_payment_value(list_of_coins)
+        self.assertEqual(total_value, 0)
+
 
 if __name__ == "__main__":
     unittest.main()
