@@ -1,6 +1,7 @@
 import unittest
 from soda_machine import SodaMachine
 
+
 class TestFillRegister(unittest.TestCase):
 
     def setUp(self):
@@ -15,6 +16,7 @@ class TestFillInventory(unittest.TestCase):
 
     def setUp(self):
         self.soda_machine = SodaMachine()
+
 
     def test_inventory_length(self):
         inventory_length = len(self.soda_machine.inventory)
