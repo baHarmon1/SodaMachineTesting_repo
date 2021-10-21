@@ -1,3 +1,5 @@
+from cans import Cola
+from coins import Quarter, Dime, Nickel, Penny
 import unittest
 from soda_machine import SodaMachine
 
@@ -12,15 +14,16 @@ class TestFillRegister(unittest.TestCase):
         register_length = len(self.soda_machine.register)
         self.assertEqual(88, register_length)
 
+
 class TestFillInventory(unittest.TestCase):
 
     def setUp(self):
         self.soda_machine = SodaMachine()
 
-
     def test_inventory_length(self):
         inventory_length = len(self.soda_machine.inventory)
         self.assertEqual(30, inventory_length)
+
 
 class TestGetCoinFromRegister(unittest.TestCase):
 
@@ -51,7 +54,8 @@ class TestGetCoinFromRegister(unittest.TestCase):
         """Test the 'None' can be returned from the register"""
         returned_coin = self.soda_machine.get_coin_from_register("Invalid")
         self.assertIsNone(returned_coin)
-        
+
+
 class TestRegisterHasCoin(unittest.TestCase):
 
     def setUp(self):
@@ -82,6 +86,7 @@ class TestRegisterHasCoin(unittest.TestCase):
         coin_type = self.has_coin.register_has_coin("Invalid")
         self.assertFalse(coin_type)
 
+
 class TestDetermineChangeValue(unittest.TestCase):
     """Test types of coins that can be returned from the register"""
 
@@ -89,8 +94,5 @@ class TestDetermineChangeValue(unittest.TestCase):
         self.value = SodaMachine()
 
     def test_higher_total_payment(self):
-        higher_payment = self.value.determine_change_value(20,5)
+        higher_payment = self.value.determine_change_value(20, 5)
         self.assertEqual(15, higher_payment)
-
-if __name__ == "__main__":
-    unittest.main()
