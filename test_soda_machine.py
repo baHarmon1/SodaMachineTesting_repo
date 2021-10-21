@@ -1,3 +1,5 @@
+from cans import Cola
+from coins import Quarter, Dime, Nickel, Penny
 import unittest
 from soda_machine import SodaMachine
 import coins
@@ -14,17 +16,18 @@ class TestFillRegister(unittest.TestCase):
         register_length = len(self.soda_machine.register)
         self.assertEqual(88, register_length)
 
+
 class TestFillInventory(unittest.TestCase):
     """Test the fill inventory method"""
 
     def setUp(self):
         self.soda_machine = SodaMachine()
 
-
     def test_inventory_length(self):
         """Test the length of the inventory"""
         inventory_length = len(self.soda_machine.inventory)
         self.assertEqual(30, inventory_length)
+
 
 class TestGetCoinFromRegister(unittest.TestCase):
     """Test the get coin from the register method"""
@@ -56,7 +59,8 @@ class TestGetCoinFromRegister(unittest.TestCase):
         """Test the 'None' can be returned from the register"""
         returned_coin = self.soda_machine.get_coin_from_register("Invalid")
         self.assertIsNone(returned_coin)
-        
+
+
 class TestRegisterHasCoin(unittest.TestCase):
     """Test all types of coins that can be returned from the register"""
 
@@ -88,6 +92,7 @@ class TestRegisterHasCoin(unittest.TestCase):
         coin_type = self.has_coin.register_has_coin("Invalid")
         self.assertFalse(coin_type)
 
+
 class TestDetermineChangeValue(unittest.TestCase):
     """Test types of coins that can be returned from the register"""
 
@@ -96,18 +101,19 @@ class TestDetermineChangeValue(unittest.TestCase):
 
     def test_higher_total_payment(self):
         """Tests that we receive the correct value"""
-        higher_payment = self.value.determine_change_value(20,5)
+        higher_payment = self.value.determine_change_value(20, 5)
         self.assertEqual(15, higher_payment)
 
     def test_higher_soda_price(self):
         """Tests that we receive the correct value"""
-        higher_soda = self.value.determine_change_value(5,20)
-        self.assertEqual(-15,higher_soda)
+        higher_soda = self.value.determine_change_value(5, 20)
+        self.assertEqual(-15, higher_soda)
 
     def test_two_equal_values(self):
         """Tests that we receive the correct value"""
-        equal_values = self.value.determine_change_value(10,10)
+        equal_values = self.value.determine_change_value(10, 10)
         self.assertEqual(0, equal_values)
+
 
 class TestCalculateCoinValue(unittest.TestCase):
     """Test calculates the values of coins in a list"""
@@ -134,6 +140,7 @@ class TestCalculateCoinValue(unittest.TestCase):
         coin_list = []
         total_value = self.coin_value.calculate_coin_value(coin_list)
         self.assertEqual(0, total_value)
+
 
 if __name__ == "__main__":
     unittest.main()
