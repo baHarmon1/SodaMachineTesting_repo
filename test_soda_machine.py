@@ -2,6 +2,7 @@ from cans import Cola
 from coins import Quarter, Dime, Nickel, Penny
 import unittest
 from soda_machine import SodaMachine
+import coins
 
 
 class TestFillRegister(unittest.TestCase):
@@ -96,3 +97,35 @@ class TestDetermineChangeValue(unittest.TestCase):
     def test_higher_total_payment(self):
         higher_payment = self.value.determine_change_value(20, 5)
         self.assertEqual(15, higher_payment)
+
+    def test_higher_soda_price(self):
+        higher_soda = self.value.determine_change_value(5, 20)
+        self.assertEqual(-15, higher_soda)
+
+    def test_two_equal_values(self):
+        equal_values = self.value.determine_change_value(10, 10)
+        self.assertEqual(0, equal_values)
+
+
+class TestCalculateCoinValue(unittest.TestCase):
+    """Test calculates the values of coins in a list"""
+
+    def setUp(self):
+        self.coin_value = SodaMachine()
+
+    def test_calculate_coins_value(self):
+        quarter_1 = coins.Quarter()
+        dime_1 = coins.Dime()
+        nickel_1 = coins.Nickel()
+        penny_1 = coins.Penny()
+        coin_list = []
+        coin_list.append(quarter_1)
+        coin_list.append(dime_1)
+        coin_list.append(nickel_1)
+        coin_list.append(penny_1)
+        total_value = self.coin_value.calculate_coin_value(coin_list)
+        self.assertEqual(.41, total_value)
+
+
+if __name__ == "__main__":
+    unittest.main()
