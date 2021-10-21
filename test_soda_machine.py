@@ -5,7 +5,7 @@ import coins
 
 class TestFillRegister(unittest.TestCase):
     """Test the register method for its size"""
-    
+
     def setUp(self):
         self.soda_machine = SodaMachine()
 
