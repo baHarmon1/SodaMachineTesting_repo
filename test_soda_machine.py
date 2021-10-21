@@ -4,7 +4,8 @@ import coins
 
 
 class TestFillRegister(unittest.TestCase):
-
+    """Test the register method for its size"""
+    
     def setUp(self):
         self.soda_machine = SodaMachine()
 
@@ -14,16 +15,19 @@ class TestFillRegister(unittest.TestCase):
         self.assertEqual(88, register_length)
 
 class TestFillInventory(unittest.TestCase):
+    """Test the fill inventory method"""
 
     def setUp(self):
         self.soda_machine = SodaMachine()
 
 
     def test_inventory_length(self):
+        """Test the length of the inventory"""
         inventory_length = len(self.soda_machine.inventory)
         self.assertEqual(30, inventory_length)
 
 class TestGetCoinFromRegister(unittest.TestCase):
+    """Test the get coin from the register method"""
 
     def setUp(self):
         self.soda_machine = SodaMachine()
@@ -54,6 +58,7 @@ class TestGetCoinFromRegister(unittest.TestCase):
         self.assertIsNone(returned_coin)
         
 class TestRegisterHasCoin(unittest.TestCase):
+    """Test all types of coins that can be returned from the register"""
 
     def setUp(self):
         self.has_coin = SodaMachine()
@@ -90,14 +95,17 @@ class TestDetermineChangeValue(unittest.TestCase):
         self.value = SodaMachine()
 
     def test_higher_total_payment(self):
+        """Tests that we receive the correct value"""
         higher_payment = self.value.determine_change_value(20,5)
         self.assertEqual(15, higher_payment)
 
     def test_higher_soda_price(self):
+        """Tests that we receive the correct value"""
         higher_soda = self.value.determine_change_value(5,20)
         self.assertEqual(-15,higher_soda)
 
     def test_two_equal_values(self):
+        """Tests that we receive the correct value"""
         equal_values = self.value.determine_change_value(10,10)
         self.assertEqual(0, equal_values)
 
@@ -108,6 +116,7 @@ class TestCalculateCoinValue(unittest.TestCase):
         self.coin_value = SodaMachine()
 
     def test_calculate_coins_value(self):
+        """Test the calculation of a list with each coin"""
         quarter_1 = coins.Quarter()
         dime_1 = coins.Dime()
         nickel_1 = coins.Nickel()
@@ -120,8 +129,11 @@ class TestCalculateCoinValue(unittest.TestCase):
         total_value = self.coin_value.calculate_coin_value(coin_list)
         self.assertEqual(.41, total_value)
 
-
-
+    def test_calculate_empty_list(self):
+        """Test the calculation of the value of an empty list"""
+        coin_list = []
+        total_value = self.coin_value.calculate_coin_value(coin_list)
+        self.assertEqual(0, total_value)
 
 if __name__ == "__main__":
     unittest.main()
